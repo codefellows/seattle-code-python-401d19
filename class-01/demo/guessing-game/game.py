@@ -16,6 +16,7 @@ things = [
             "sells you something",
             "often see them in a rush",
         ],
+        "tries": 0,
     },
     {
         "name": "chair",
@@ -25,6 +26,7 @@ things = [
             "not used in stand up meetings",
             "avoid electric ones",
         ],
+        "tries": 0,
     },
     {
         "name": "???",
@@ -35,12 +37,12 @@ things = [
             "never lies to you",
             "fine with mom but not with mama",
         ],
+        "tries": 0,
     },
 ]
 
 
 def guess_a_thing(riddle_index):
-
     thing = things[riddle_index]
 
     success = False
@@ -53,6 +55,8 @@ def guess_a_thing(riddle_index):
 
     while len(hints):
 
+        thing["tries"] += 1
+
         if guess == correct_answer:
             success = True
             break
@@ -64,19 +68,20 @@ def guess_a_thing(riddle_index):
         guess = input("I spy with my little eye... ")
 
     if success or guess == correct_answer:
-        print("Crushed it")
+        num_tries = thing["tries"]
+        print(f"You guessed it in {num_tries} tries!")
     else:
-        print(f"Too bad. It's a {correct_answer}")
+        print(f"Out of tries :( It's a {correct_answer}")
 
 
 if __name__ == "__main__":
-    riddle_index = 0
+    index = 0
 
     response = ""
     while response != "n":
-        guess_a_thing(riddle_index)
-        riddle_index += 1
-        if riddle_index > 1:
+        guess_a_thing(index)
+        index += 1
+        if index > 1:
             break
         response = input("Wanna play?")
 
