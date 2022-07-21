@@ -1,6 +1,7 @@
 attrs==21.4.0
 click==8.0.4
 colorama==0.4.4
+coverage==6.4.2
 docopt==0.6.2
 iniconfig==1.1.1
 mccabe==0.6.1
@@ -14,6 +15,7 @@ pycodestyle==2.8.0
 pyflakes==2.4.0
 pyparsing==3.0.7
 pytest==7.0.1
+pytest-cov==3.0.0
 pytest-watch==4.2.0
 tomli==2.0.1
 watchdog==2.1.6

@@ -1,8 +1,7 @@
-from abc import ABC, abstractmethod, abstractstaticmethod, abstractclassmethod
+from abc import ABC, abstractmethod
 
 
 class Dog(ABC):
-
     count = 0
 
     def __init__(self, name="unknown"):
@@ -12,7 +11,8 @@ class Dog(ABC):
     def sleep(self):
         return "zzz"
 
-    @abstractclassmethod
+    @classmethod
+    @abstractmethod
     def increase_count(cls):
         Dog.count += 1
 
@@ -20,7 +20,7 @@ class Dog(ABC):
     def greet(self):
         pass
 
-    @abstractstaticmethod
+    @staticmethod
     def get_characteristics():
         pass
 
