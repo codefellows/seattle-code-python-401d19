@@ -123,11 +123,11 @@ def test_dog_count():
     assert Boxer.get_breed_count() == 1
     assert Dog.get_all_dog_count() == 2
 
-
+# stretch
 # @pytest.mark.skip("todo")
-def test_dog_is_abstract():
-    with pytest.raises(TypeError):
-        Dog("Impossible")
+# def test_dog_is_abstract():
+#     with pytest.raises(TypeError):
+#         Dog("Impossible")
 
 
 # ### FIXTURES ###
