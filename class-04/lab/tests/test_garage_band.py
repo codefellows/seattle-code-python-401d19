@@ -132,7 +132,7 @@ def test_play_solos_for_whole_band(one_band):
 
 
 @pytest.mark.skip("todo")
-def test_class_tracks_instances():
+def test_band_instances():
     assert Band.to_list() == []
     the_nobodies = Band("The Nobodies", [])
     assert len(Band.instances) == 1
