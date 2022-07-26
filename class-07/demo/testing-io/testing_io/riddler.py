@@ -1,20 +1,21 @@
-class Riddler:
-    def __init__(self, riddle="my favorite color", answer="green"):
-        self.riddle = riddle
-        self.answer = answer
+print("What is your name?")
+player = input("> ")
+print(f"Hi, {player}!")
+print("Step right up and guess my favorite color!")
 
-    def play(self):
-        print("What is your name?")
-        name = input("> ")
-        print(f"Hi, {name}!")
-        print(f"Step right up and guess {self.riddle}!")
+# repeat until guess is correct
 
-        while True:
-            print("What is your guess?")
-            guess = input("> ")
+while True:
+    print("What is your guess?")
 
-            if guess == self.answer:
-                print("You got it!")
-                break
-            else:
-                print("Nope, that's not it.")
+    # store the user's guess
+    guess = input("> ")
+
+    if guess == "green":
+        #if guess equals (green) then you got it!
+        print("You got it!")
+        break
+    else:
+        print("Nope, that's not it.")
+        # ask again
+
