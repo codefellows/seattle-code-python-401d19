@@ -47,19 +47,6 @@ def do_round(round_num):
     pass
 
 
-def do_round(round_num):
-    """
-    Play a round of the game
-    Args:
-        round_num:
-
-    Returns:
-        integer for number of points scored in the round
-        -1 has special meaning for "quit"
-    """
-    pass
-
-
 def zilch():
     """
     Display zilch message
