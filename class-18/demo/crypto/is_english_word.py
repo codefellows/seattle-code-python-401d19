@@ -26,14 +26,15 @@ def count_words(text):
             # print("english word", word)
             word_count += 1
         else:
-            pass
             # print('not english word or name', word)
+            pass
 
     return word_count
 
 
 for phrase in candidates:
     word_count = count_words(phrase)
+
     percentage = int(word_count / len(phrase.split()) * 100)
     if percentage > 50:
         print(phrase, percentage)

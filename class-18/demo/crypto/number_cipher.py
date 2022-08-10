@@ -1,23 +1,27 @@
 import random
 
+
 # chars = ['0'...'9']
 
 
-def encrypt(plain, key):
-    encrypted_text = ""
-
-    # 1234 -> 2345 with key of 1
-
+def encrypt(plain, shift):
+    encrypted = ""
     for char in plain:
         num = int(char)
-        shifted_num = (num + key) % 10
-        encrypted_text += str(shifted_num)
+        shifted_num = (num + shift) % 10 # must be 0-9
+        encrypted += str(shifted_num)
 
-    return encrypted_text
+        # LAB note - you can convert alpha characters (aka letters) into numeric form.
+        # search for python "ord" function
+        # and chr to go the other direction
 
 
-def decrypt(encoded, key):
-    return encrypt(encoded, -key)
+    return encrypted
+
+
+def decrypt(cipher, shift):
+    # you can do own logic here, or notice that decrypting is same as encrypting with the number negated
+    return encrypt(cipher, -shift)
 
 
 if __name__ == "__main__":
