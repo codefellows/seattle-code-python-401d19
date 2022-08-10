@@ -6,42 +6,43 @@ class KaryTree:
         self.root = root
 
     def __str__(self):
+
+        if not self.root:
+            return "EMPTY"
+
         values = []
+        breadth = Queue()
 
-        def converter(node):
-            values.append(str(node.value))
+        breadth.enqueue(self.root)
 
-        self.breadth_first(action=converter)
+        while breadth: # aka not is_empty
+            front = breadth.dequeue()
+            values.append(str(front.value))
+            for child in front.children:
+                breadth.enqueue(child)
 
         return " ".join(values)
 
     def clone(self):
+        # return a clone of the tree with new nodes keeping the values
         if not self.root:
-            return
+            return KaryTree()
 
-        q = Queue()
-        q.enqueue(self.root)
-        clone_root = Node(self.root.value)
-        while q:
-            exiting = q.dequeue()
-            for child in exiting.children:
-                q.enqueue(child)
+        breadth = Queue()
+        breadth.enqueue(self.root)
+        clone_root = None
+        while breadth:
+            front = breadth.dequeue()
+            clone_front = Node(front.value)
+            if not clone_root:
+                clone_root = clone_front
+            for child in front.children:
+                breadth.enqueue(child)
+                # create a clone node
                 clone_node = Node(child.value)
-                clone_root.children.append(clone_node)
+                clone_front.children.append(clone_node)
 
         return KaryTree(root=clone_root)
-
-    def breadth_first(self, action=lambda x: None):
-        q = Queue()
-        q.enqueue(self.root)
-
-        while q:
-            exiting = q.dequeue()
-            action(exiting)
-            for child in exiting.children:
-                q.enqueue(child)
-
-        return self
 
 
 class Node:
@@ -53,25 +54,29 @@ class Node:
         return str(self.value)
 
 
-def double_the_odds(tree):
-    clone = tree.clone()
-    bfs = Queue()
-    bfs.enqueue(clone.root)
-    while bfs:
-        exiting = bfs.dequeue()
-        if exiting.value % 2:
-            exiting.value *= 2
-        for child in exiting.children:
-            bfs.enqueue(child)
+def double_the_odds(source_tree):
+    """
+    :param source_tree:
+    :return: new tree with odd values doubled
+    """
+    tree = source_tree.clone()
 
-    return clone
+    # breadth first search
+    breadth = Queue()
+    breadth.enqueue(tree.root)
 
+    while breadth:  # aka not empty, your code should use is_empty method
+        front = breadth.dequeue()
+        # do something with front
+        # double the odd values
+        if front.value % 2 == 1:
+            front.value *= 2
 
-def double_the_odds_too_fancy(tree):
-    def doubler(node):
-        node.value = node.value * (node.value % 2 + 1)
+        # enqueue front's children
+        for child in front.children:
+            breadth.enqueue(child)
 
-    return tree.clone().breadth_first(action=doubler)
+    return tree  # TODO: we want a NEW tree
 
 
 if __name__ == '__main__':
@@ -81,9 +86,11 @@ if __name__ == '__main__':
     five = Node(5)
     one = Node(1, [two, three, four])
     ktree = KaryTree(root=one)
-    # print(ktree)
-    # cloned = ktree.clone()
-    # print(cloned)
-    # vals = ktree.breadth_first()
+    print(ktree)
+
     odd_doubled = double_the_odds(ktree)
-    print(odd_doubled)
+    assert odd_doubled.root.value == 2
+    assert ktree.root.value == 1
+    assert len(odd_doubled.root.children) == 3
+
+    print("TESTS PASSED")
