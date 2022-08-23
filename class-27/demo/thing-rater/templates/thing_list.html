@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% comment %} Use below if you use context_object_name in views {% endcomment %}
+  {% comment %} {% for thing in things %} {% endcomment %}
+  {% for thing in object_list %}
+  <h2><a href="{% url 'thing_detail' thing.pk %}">{{ thing.name }}</a></h2>
+  {% endfor %}
+{% endblock content %}

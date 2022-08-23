@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+
+# Create your models here.
 class Thing(models.Model):
     name = models.CharField(max_length=256)
     rating = models.IntegerField(default=0)
