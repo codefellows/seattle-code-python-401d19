@@ -12,7 +12,7 @@ class ThingTests(TestCase):
         )
 
         self.thing = Thing.objects.create(
-            name="pickle", rating=1, reviewer=self.user,
+            name="pickle", review="so refreshing", reviewer=self.user,
         )
 
     def test_string_representation(self):
@@ -21,7 +21,7 @@ class ThingTests(TestCase):
     def test_thing_content(self):
         self.assertEqual(f"{self.thing.name}", "pickle")
         self.assertEqual(f"{self.thing.reviewer}", "tester")
-        self.assertEqual(self.thing.rating, 1)
+        self.assertEqual(self.thing.review, "so refreshing")
 
     def test_thing_list_view(self):
         response = self.client.get(reverse("thing_list"))
@@ -42,7 +42,7 @@ class ThingTests(TestCase):
             reverse("thing_create"),
             {
                 "name": "Rake",
-                "rating": "2",
+                "review": "Better than shovel for leaves",
                 "reviewer": self.user.id,
             }, follow=True
         )
@@ -50,12 +50,10 @@ class ThingTests(TestCase):
         self.assertRedirects(response, reverse("thing_detail", args="2"))
         self.assertContains(response, "Details about Rake")
 
-
-
     def test_thing_update_view_redirect(self):
         response = self.client.post(
             reverse("thing_update", args="1"),
-            {"name": "Updated name","rating":"3","reviewer":self.user.id}
+            {"name": "Updated name", "review": "low on calories", "reviewer": self.user.id}
         )
 
         self.assertRedirects(response, reverse("thing_detail", args="1"))
