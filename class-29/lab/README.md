@@ -14,6 +14,7 @@ Let's change that by checking out a new kind of "utility first" CSS toolkit name
 
 - Follow the [Play CDN](https://tailwindcss.com/docs/installation/play-cdn){:target="_blank"} instructions to add Tailwind to head of your html templates.
   - That will probably be "base.html"
+- The `Quick search` is super helpful and can be triggered with command/control K.
 
 ### User Acceptance Tests
 
