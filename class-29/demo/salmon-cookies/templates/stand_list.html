@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Stand Sales</title>
+</head>
+<body class="bg-gray-300 font-mono space-y-8">
+<h1 class="text-4xl text-center text-gray-700">Cookie Stands</h1>
+<table class="mx-auto text-sm text-left text-gray-500 px-2">
+  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  <tr>
+    <th></th>
+    {% for label in labels %}
+      <th class="py-3 px-6">{{ label }}</th>
+    {% endfor %}
+  </tr>
+  </thead>
+  <tbody>
+  {% for stand in stands %}
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+      <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ stand.location }}</th>
+      {% for hourly_sales in stand.sales %}
+        <td class="py-4 px-6">{{ hourly_sales }}</td>
+      {% endfor %}
+      <td class="py-4 px-6">{{ stand.total }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  <tfoot>
+  <tr class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <th class="py-3 px-6">Totals:</th>
+      {% for total in cross_store_hourly_totals %}
+        <th class="py-3 px-6">{{ total }}</th>
+      {% endfor %}
+    </tr>
+  </tfoot>
+</table>
+
+</body>
+</html>

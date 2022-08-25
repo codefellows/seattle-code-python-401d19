@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CookiesConfig(AppConfig):
+class StandsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "cookies"
+    name = "stands"
