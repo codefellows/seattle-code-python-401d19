@@ -12,4 +12,15 @@ We'll review Big O and consider what to do when we're using a core language feat
 
 ## Class Outline
 
-<!-- To Be Completed By Instructor -->
+### Top 10 Algoithms for the Coding Interview
+
+1. Depth First Search
+1. Breadh First Search
+1. Matching Brackets
+1. Hash Tables
+1. Multiple Pointers
+1. Reversing a Linked List
+1. Sorthing Fundamentals
+1. Recursion
+1. Classes / OOP
+1. Binary Search
