@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import { useState } from 'react'
+import Head from 'next/head';
+import { useState } from 'react';
 
 export default function Home() {
 
@@ -8,11 +8,12 @@ export default function Home() {
 
     function questionAskedHandler(event) {
         event.preventDefault();
-        let randomReply = Math.random() > .5 ? "Yes" : "No";
         setQuestion(event.target.question.value);
-        setReply(randomReply)
-        event.target.reset()
+        event.target.reset();
+        const randomReply = Math.random() > .5 ? "Yes" : "No";
+        setReply(randomReply);
     }
+
     return (
         <div>
             <Head>
@@ -29,38 +30,42 @@ export default function Home() {
     )
 }
 
-function EightBall({ question }) {
-    return <div className="bg-gray-900 rounded-full w-96 h-96">
-        <div className="relative flex items-center justify-center w-56 h-56 rounded-full bg-gray-50 left-12 top-12">
-            <p>{question}</p>
-        </div>
-    </div>
+function Header() {
+    return (
+        <header className='p-4 text-4xl bg-gray-500 text-gray-50'>
+            <h1>Expert 8 Ball</h1>
+        </header>
+    )
 }
 
-function Header() {
-    return <header className="px-8 py-6 text-4xl bg-gray-500 text-gray-50">
-        <h1>Expert 8 Ball</h1>
-    </header>
+function Footer(props) {
+    return (
+        <footer className='p-4 bg-gray-500 text-gray-50'>
+            <p>&copy;{props.copyright}</p>
+        </footer>
+    )
 }
 
 function QuestionForm(props) {
     return (
         <form onSubmit={props.onSubmit} className="flex w-1/2 p-2 bg-gray-200">
-            <input name="question" className="flex-auto pl-2" placeholder='Ask me anything...' required />
-            <button className="px-4 py-2 bg-gray-400 text-gray-50">Ask</button>
+            <input name="question" className='flex-auto pl-2' type="text" placeholder='Ask me anything...' required />
+            <button type="submit" className="px-4 py-2 bg-gray-400 text-gray-50">Ask</button>
         </form>
-    )
+    );
 }
 
-function Response({ reply }) {
-    return <p className="">{reply}</p>
-}
-
-function Footer({ copyright }) {
+function EightBall(props) {
     return (
-        <footer className="px-8 py-6 bg-gray-500 text-gray-50">
-            <p>&copy;{copyright}</p>
-        </footer>
+        <div className='bg-gray-900 rounded-full w-96 h-96'>
+            <div className="relative flex items-center justify-center w-56 h-56 rounded-full top-12 left-12 bg-gray-50">
+                <p>{props.question}</p>
+            </div>
+        </div>
     )
+}
+
+function Response(props) {
+    return (<h1 className="text-4xl">{props.reply}</h1>)
 }
 
