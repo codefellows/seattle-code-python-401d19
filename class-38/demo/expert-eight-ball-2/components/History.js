@@ -1,4 +1,4 @@
-export default function History({ questions }) {
+export default function History({ questionList: questions }) {
 
     if (questions.length == 0) {
 
